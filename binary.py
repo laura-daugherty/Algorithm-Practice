@@ -1,8 +1,25 @@
-# middle = len(arr) / 2 = 20 / 2 = 10
-# arr[10] = 15? # nope, check if greater than or less than
-# arr[10] > 15? # nope, eliminate LHS of array, continue searching RHS
-# middle = len(arr[11: ]) / 2 = 9 / 2 = 4 .  # integer division
-# arr[11 + 4] = 15? # yes! we can return the index where the target value can be found
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+def linear_search(arr, target):
+  for i in range(0, len(arr)):
+    if arr[i] ==target:
+      return i
+    return -1
+
+print(linear_search([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
 
 
-arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+def binary_search(arr, target):
+  low = 0
+  high = len(arr)-1
+  while low <= high:
+    middle = (low+high)/2
+    if target < arr[middle]:
+      high = middle-1
+    elif target > arr[middle]:
+      low = middle+1
+    else:
+      return middle
+  return -1
+
+print(binary_search(arr, 3))
